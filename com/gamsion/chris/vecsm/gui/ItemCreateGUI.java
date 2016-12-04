@@ -6,6 +6,7 @@ import java.awt.Toolkit;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
@@ -19,9 +20,10 @@ public class ItemCreateGUI extends JFrame {
 	PlanCreationGUI createGUI;
 	public JTextField title = new JTextField("Enter a title.", 30);
 	public JTextField totalCost = new JTextField("Enter total cost of this item.", 30);
-	public JCheckBox checkbox = new JCheckBox("Mandatory payment");
+	public JCheckBox mandatoryBox = new JCheckBox("Mandatory payment");
 	public JTextArea description = new JTextArea();
 	public JButton create = new JButton("Create");
+	public JLabel mandatoryLbl = new JLabel("Mandatory Payment");
 
 	public ItemCreateGUI(PlanCreationGUI create) {
 		super("VECSM Creation GUI...");
@@ -32,7 +34,7 @@ public class ItemCreateGUI extends JFrame {
 	public void setupGUI() {
 		description.setPreferredSize(new Dimension(600, 400));
 		create.setPreferredSize(new Dimension(200,60));
-		checkbox.setPreferredSize(new Dimension(10, 10));
+		mandatoryBox.setPreferredSize(new Dimension(20, 20));
 		
 		SpringLayout layout = new SpringLayout();
 		setLayout(layout);
@@ -49,7 +51,8 @@ public class ItemCreateGUI extends JFrame {
 		this.getContentPane().add(description);
 		this.getContentPane().add(create);
 		this.getContentPane().add(totalCost);
-		this.getContentPane().add(checkbox);
+		this.getContentPane().add(mandatoryBox);
+		this.getContentPane().add(mandatoryLbl);
 		
 		//Set constraints
 		layout.putConstraint(SpringLayout.NORTH, title, 10, SpringLayout.NORTH, this.getContentPane());
@@ -60,8 +63,10 @@ public class ItemCreateGUI extends JFrame {
 		layout.putConstraint(SpringLayout.WEST, create, 0, SpringLayout.WEST, this.getContentPane());
 		layout.putConstraint(SpringLayout.WEST, totalCost, 10, SpringLayout.EAST, create);
 		layout.putConstraint(SpringLayout.VERTICAL_CENTER, totalCost, -20, SpringLayout.VERTICAL_CENTER, create);
-		layout.putConstraint(SpringLayout.EAST, checkbox, -20, SpringLayout.EAST, this.getContentPane());
-		layout.putConstraint(SpringLayout.SOUTH, checkbox, 0, SpringLayout.SOUTH, totalCost);
+		layout.putConstraint(SpringLayout.WEST, mandatoryBox, 10, SpringLayout.WEST, totalCost);
+		layout.putConstraint(SpringLayout.NORTH, mandatoryBox, 10, SpringLayout.SOUTH, totalCost);
+		layout.putConstraint(SpringLayout.WEST, mandatoryLbl, 10, SpringLayout.EAST, mandatoryBox);
+		layout.putConstraint(SpringLayout.VERTICAL_CENTER, mandatoryLbl, 0, SpringLayout.VERTICAL_CENTER, mandatoryBox);
 		
 		
 		pack();

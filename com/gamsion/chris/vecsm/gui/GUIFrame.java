@@ -43,7 +43,7 @@ public class GUIFrame extends JFrame{
 	public String organizeOpt(Map<String, Integer> map){
 		StringBuilder sb = new StringBuilder();
 		for(String key: map.keySet()){
-			sb.append(String.format("You may use %s more for %s.\n", -map.get(key), key));
+			sb.append(String.format("You may use %s more for %s.\n", map.get(key), key));
 		}
 		return sb.toString().trim();
 	}

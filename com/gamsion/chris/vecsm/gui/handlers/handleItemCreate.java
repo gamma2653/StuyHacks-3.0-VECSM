@@ -18,7 +18,7 @@ public class handleItemCreate implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		pCreate.items.add(new CostItem(create.title.getText().trim(), create.description.getText().trim(),
-				Integer.parseInt(create.totalCost.getText().trim()), create.checkbox.isSelected()));
+				Integer.parseInt(create.totalCost.getText().trim()), create.mandatoryBox.isSelected()));
 		create.dispose();
 		System.out.println(pCreate.items);
 

@@ -8,15 +8,15 @@ import java.util.Map;
 public class Plan {
 	public String title;
 	public String description;
-	public int budget = 0;
+	public final int budget;
 	public List<CostItem> items = new ArrayList<CostItem>();
-	public Map<String, Integer> optionals = new HashMap<String, Integer>();
+	public final Map<String, Integer> optionals = new HashMap<String, Integer>();
 	public int available = 0;
-	int totalBudget;
-	public Plan(){
+	public Plan(int budget){
 		this.title = null;
 		this.description = null;
 		this.items = null;
+		this.budget = budget;
 	}
 	public Plan(String title, int budget){
 		this.budget = budget;
@@ -51,11 +51,10 @@ public class Plan {
 		for(CostItem i : items){
 			mandatories.add(i.totalCost);
 		}
-		available = totalBudget-sum(mandatories);
+		available = budget-sum(mandatories);
 		for(CostItem i : items){
 			optionals.put(i.title, i.totalCost);
 		}
-		
 		
 		
 		
